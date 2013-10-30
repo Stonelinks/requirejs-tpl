@@ -1,0 +1,10 @@
+*.a
+*.o
+*.so
+*.mo
+*.pyc
+*~
+.svn
+
+# exclude little turds left about by git during a merge
+*.orig
