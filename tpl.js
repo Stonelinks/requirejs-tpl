@@ -46,9 +46,12 @@ define(['module', 'text', 'underscore'], function(module, text, _) {
 					contents = contents.substr(contents.indexOf('return') + 7);
 					contents = contents.substr(0, contents.lastIndexOf(';') - 3);
 					try {
-						var template = _.template(eval(contents), undefined, settings);
+						// Maybe someday when I have my act together we can actually compile templates...
+						// Right now node's environment is too different from the browser for this to work
+						// var template = _.template(eval(contents), undefined, settings);
+							// "define(function() { return " + template.source + " });");
 						write.asModule(pluginName + "!" + moduleName,
-							"define(function() { return " + template.source + " });");
+							"define(['underscore'], function(_) { return _.template(" + content + "); });");
 					}
 					catch (err) {
 						console.error('~~~~~');
